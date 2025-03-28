@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Implicit Hand Reconstruction</title>
+</head>
+<body>
+
+<!-- Project Information -->
+<h1>Implicit Hand Reconstruction</h1>
+
+<div align="center">
+  <b>Aleksei Zhuravlev</b>, <a href="https://people.ee.ethz.ch/~paudeld/">Dr. Danda Pani Paudel</a>, <a href="https://probstt.bitbucket.io/">Dr. Thomas Probst</a><br>
+</div>
+
+<p>A NeRF-based 3D reconstruction of a human hand from monocular and multi-view sequences, based on Interhand2.6m dataset</p>
+
+
+<!-- Images -->
+<table>
+  <tr>
+    <td><img src="featured.gif" width="320" height="240"><br /></td>
+    <td><img src="cam400280.gif" width="320" height="240"><br /></td>
+  </tr>
+</table>
+
+<!-- Abstract -->
+<h2>Abstract</h2>
+<p style="text-align: justify">
+  This work addresses the problem of reconstructing an animatable avatar of a human hand from a collection of images of a user performing a sequence of gestures. Our model can capture accurate hand shape and appearance and generalize to various hand subjects. 
+  For a 3D point, we can apply two types of warping: zero-pose canonical space and UV space. The warped coordinates are then passed to a NeRF which outputs the expected color and density. We demonstrate that our model can accurately reconstruct a dynamic hand from monocular or multi-view sequences, achieving high visual quality on the Interhand2.6m dataset.
+</p>
+
+<!-- Method -->
+<h2>Method</h2>
+<p>
+  <img src="Architecture_humannerf.png" alt="Architecture of HumanNeRF, adapted to human hand setting instead of full body" title="Model architecture" />
+  <br />
+  <img src="Architecture_livehand.png" alt="Architecture of LiveHand, reimplemented from scratch" title="Model architecture" />
+</p>
+<ul>
+  <li>Warping of 3D points to zero-pose canonical space - adapted the approach of HumanNeRF to the hand setting instead of full body</li>
+  <li>Warping of 3D points to UV space (texture coordinates + distance to the mesh), based on LiveHand - developed from scratch without using C++ CUDA kernels</li>
+  <li>Introduced perceptual loss (LPIPS) to enhance the visual quality; improved PSNR score by 14% over MSE-only loss</li>
+</ul>
+
+<!-- Results -->
+<h2>Results</h2>
+<center>
+  <table>
+    <tr>
+      <td><img src="cam400293.gif" width="320" height="240"><br /></td>
+      <td><img src="cam400296.gif" width="320" height="240"><br /></td>
+    </tr>
+  </table>
+  <p>Single view multi-pose sequence</p>
+  <img src="multi_pose.png" alt="Reconstructed avatar in multiple poses from different views" title="Reconstructed avatar" />
+</center>
+
+<!-- References -->
+<h2>References</h2>
+<ol>
+  <li><a href="https://vcai.mpi-inf.mpg.de/projects/LiveHand/">LiveHand</a>: Real-time and Photorealistic Neural Hand Rendering. arXiv preprint arXiv:2302.07672</li>
+  <li><a href="https://machinelearning.apple.com/research/neural-human-radiance-field">Neuman</a>: Neural human radiance field from a single video. In European Conference on Computer Vision, pp. 402-418. Cham: Springer Nature Switzerland, 2022</li>
+</ol>
+
+</body>
+</html>
