@@ -76,13 +76,21 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="padding-top: 10pt;">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <p>
+                &#x1F680; <span style="color:#c20000;"><b>Update</b></span>: code and data are now available! &#x1F680;<br>
+            </p>
+    </div>
+
+    <div class="row" style="padding-top: 0pt;">
         <div class="col-md-6 col-md-offset-3 text-center">
             <!-- <ul class="nav nav-pills nav-justified nav-fill"> -->
             <ul class="nav nav-pills nav-fill text-center" style="display: flex; justify-content: center;">
                 <li class="nav-item">
                     <a class="nav-link" href="https://arxiv.org/pdf/2503.01845">
-                        <img src="assets/Paper_preview.png" height="60px" style="border: 1px solid black;">
+                        <!-- <img src="assets/Paper_preview.png" height="60px" style="border: 1px solid black;"> -->
+                        <img src="assets/Paper_preview.png" height="60px">
                         <h4><strong>Paper</strong></h4>
                     </a>
                 </li>
@@ -93,15 +101,15 @@
                     </a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);">
+                    <a class="nav-link" href="https://github.com/alekseizhuravlev/denoising-functional-maps">
                         <img src="assets/github.png" height="60px">
-                        <h4><strong>Code (soon)</strong></h4>
+                        <h4><strong>Code</strong></h4>
                     </a>
                 </li>
-                <li>
-                    <a href="javascript:void(0);">
+                <li class="nav-item">
+                    <a href="https://drive.google.com/drive/folders/1_lb59YmxMGUpPeqKwHBwEAag_UhQoi24?usp=sharing">
                     <image src="assets/database_icon.png" height="60px">
-                        <h4><strong>Data (soon)</strong></h4>
+                        <h4><strong>Data</strong></h4>
                     </a>
                 </li>
             </ul>
@@ -136,6 +144,19 @@
                 Our approach achieves competitive performance on standard <b>human</b> datasets, meshes with anisotropic connectivity, non-isometric <b>humanoid</b> shapes,
                 as well as <b>animals</b> compared to existing descriptor-based and large-scale shape deformation methods. 
             </p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+            <h4><b>Key contributions</b></h4>
+            <ul>
+                <li>First work to apply <b>DDPMs</b> to the shape correspondence problem, parameterized by functional maps.</li>
+                <li>Unsupervised <b>sign correction</b> of Laplacian eigenvectors based on surface features.</li>
+                <li>Competitive matching performance on human and animal shapes.</li>
+            </ul>
         </div>
 
     </div>
@@ -456,15 +477,12 @@
               </p>              
 
 <pre id="bibtex">
-@inproceedings{zhuravlev2025denoisfm,
-    title={Denoising Functional Maps: Diffusion Models for Shape Correspondence}, 
-    author={Aleksei Zhuravlev and Zorah Lähner and Vladislav Golyanik},
-    year={2025},
-    eprint={2503.01845},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV},
-    url={https://arxiv.org/abs/2503.01845}, 
-}
+    @inproceedings{zhuravlev2025denoisfm, 
+        title={Denoising Functional Maps: Diffusion Models for Shape Correspondence},
+        author={Zhuravlev, Aleksei and L{\"a}hner, Zorah and Golyanik, Vladislav},
+        booktitle={Computer Vision and Pattern Recognition (CVPR)},
+        year={2025}
+    }
 </pre>
         </div>
     </div>
