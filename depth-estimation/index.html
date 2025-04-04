@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Monocular Depth Estimation</title>
+
+    <meta name="description" content="Semester Project"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta property="og:image" content="https://moritzkappel.github.io/projects/dnpc/assets/dnpc_pipeline_og.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Denoising Functional Maps: Diffusion Models for Shape Correspondence"/>
+    <meta property="og:description" content="A novel approach for predicting shape correspondences in the form of functional maps using denoising diffusion models."/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="https://moritzkappel.github.io/projects/dnpc/"/>
+    <meta name="twitter:title" content="Denoising Functional Maps: Diffusion Models for Shape Correspondence"/>
+    <meta name="twitter:description" content="A novel approach for predicting shape correspondences in the form of functional maps using denoising diffusion models."/>
+    <meta name="twitter:image" content="https://moritzkappel.github.io/projects/dnpc/assets/dnpc_pipeline_tw.jpg"/> -->
+
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png"> -->
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>  
+
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+<div class="container" id="main">
+
+    <div class="row">
+        <h2 class="col-md-12 text-center">
+            Monocular Depth Estimation
+        </h2>
+        <h4 class="col-md-12 text-center">
+            Semester Project
+        </h4>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <!-- List should be aligned by top -->
+            <ul class="list-inline text-center" style="display: flex; justify-content: center;">
+                <li>
+                    <a style="text-decoration:none" href="https://alekseizhuravlev.github.io/">Aleksei Zhuravlev</a>
+                </li>
+                <li>
+                    <a style="text-decoration:none" href="">Luis Denninger</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div class="row" style="padding-top: 0pt;">
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <!-- <ul class="nav nav-pills nav-justified nav-fill"> -->
+            <ul class="nav nav-pills nav-fill text-center" style="display: flex; justify-content: center;">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://drive.google.com/file/d/1uFtFNbG0R6z7cEVWbDfxI2-yMyg_wJ5K/view?usp=sharing">
+                        <!-- <img src="assets/Paper_preview.png" height="60px" style="border: 1px solid black;"> -->
+                        <img src="assets/pdf.png" height="60px">
+                        <h4><strong>PDF</strong></h4>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/AlekseiZhuravlev/MotionMixerConv/">
+                        <img src="assets/github.png" height="60px">
+                        <h4><strong>Code</strong></h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="row" style="padding-top: 10pt;">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <!-- <hr> -->
+            <img src="assets/featured.gif" style="width:45%; padding-bottom:20px;">
+            <img src="assets/cam400280.gif" style="width:45%; padding-bottom:20px;">
+    </div>
+
+
+    <div class="row" style="padding-top: 10pt;">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <p>
+                A lightweight monocular depth estimation model for UAVs, capable of real-time performance.
+            </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <hr>
+            <h3>Abstract</h3>
+            <hr>
+            <p class="text-justify">
+                Obstacle avoidance is vital for unmanned aerial vehicles (UAVs).
+                In this lab report, we present an approach for real-time
+                metric depth estimation using unlabeled drone data. Initially, a pretrained depth estimator generates relative pseudo ground-truth depth
+                maps. Consecutively, a lightweight model with real-time capabilities utilizes this training data to estimate depth maps up to a scaling factor
+                that is subsequently eliminated through a final optmization scheme. Our
+                evaluation explores various loss formulations, training approaches, and
+                incorporation of temporal context, aiming to enhance baseline results.
+                We improved on the baseline result and made our model runnable on a
+                DJI Mini 3 Pro drone at up to 60 FPS. Moreover, we assess the capabilities of our scale estimation approach and the impact of different components. While our method proves efficient with ground-truth depths,
+                it exhibits limitations when applied to imperfect predicted depth maps
+                and requires further adjustments to be applicable in real-time scenarios
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="row" style="padding-top: 10pt;">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <hr>
+            <h3>Method</h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="assets/method_1.png" style="width:70%">
+                    <br /><strong>RGB Image, Pseudo Ground Truth, and ours</strong>
+                </div>
+                <div class="col-md-6" style="display: table; height: 100%;">
+                    <div style="display: table-cell; vertical-align: bottom;">
+                        <img src="assets/method_2.jpg" style="width:70%">
+                        <br /><strong>DJI Mini 3 Pro</strong>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Bullet points in single cell -->
+        <div class="col-md-10 col-md-offset-1 text-left" style="padding-top: 10pt;">
+            <ul>
+                <li>Depth Anything was used to generate pseudo ground-truth depth maps, given our unlabeled drone data</li>
+                <li>A lightweight depth estimator based on FastDepth was trained on the generated depth maps</li>
+                <li>The trained model was deployed on a DJI Mini 3 Pro drone using the ONNX Runtime</li>
+            </ul>
+        </div>
+    </div>
+    
+
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <hr>
+            <h3>Results</h3>
+            <hr>
+            <iframe src="https://drive.google.com/file/d/15iNiO8vkoLX0bGaZsDANrTmAsuUoAWpj/view?usp=drive_link" width="640" height="480" allow="autoplay"></iframe>
+            <p class="text-center" style="padding-top: 10pt;">Depth estimation on data captured in our lab.</p>
+
+            <iframe src="https://drive.google.com/file/d/1w0QXXHB-Lzv1gJOPgYzuxpuJEGi4cRB-/view?usp=drive_link" width="640" height="480" allow="autoplay"></iframe>
+            <p class="text-center" style="padding-top: 10pt;">Depth estimation on data captured in the university.</p>
+
+            <iframe src="https://drive.google.com/file/d/19N0YyCWlhri4dFZAdRliE9vVLjRz-SBk/view?usp=drive_link" width="640" height="480" allow="autoplay"></iframe>
+            <p class="text-center" style="padding-top: 10pt;">Depth estimation on data provided by Deutschen Rettungsrobotik-Zentrums.</p>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <hr>
+            <h3>References</h3>
+            <hr>
+            <ol>
+                <li>Depth anything: Unleashing the power of large-scale unlabeled data, CVPR 2024.</li>
+                <li>Fastdepth: Fast monocular depth estimation on embedded systems, ICRA 2019.</li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
