@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Style Transfer using BERT-based Models</title>
+
+    <meta name="description" content="Semester Project"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta property="og:image" content="https://moritzkappel.github.io/projects/dnpc/assets/dnpc_pipeline_og.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Denoising Functional Maps: Diffusion Models for Shape Correspondence"/>
+    <meta property="og:description" content="A novel approach for predicting shape correspondences in the form of functional maps using denoising diffusion models."/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="https://moritzkappel.github.io/projects/dnpc/"/>
+    <meta name="twitter:title" content="Denoising Functional Maps: Diffusion Models for Shape Correspondence"/>
+    <meta name="twitter:description" content="A novel approach for predicting shape correspondences in the form of functional maps using denoising diffusion models."/>
+    <meta name="twitter:image" content="https://moritzkappel.github.io/projects/dnpc/assets/dnpc_pipeline_tw.jpg"/> -->
+
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png"> -->
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>  
+
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+<div class="container" id="main">
+
+    <div class="row">
+        <h2 class="col-md-12 text-center">
+            Style Transfer using BERT-based Models
+        </h2>
+        <h4 class="col-md-12 text-center">
+            Semester Project
+        </h4>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <!-- List should be aligned by top -->
+            <ul class="list-inline text-center" style="display: flex; justify-content: center;">
+                <li>
+                    Affan Zafar
+                </li>
+                <li>
+                    <a style="text-decoration:none" href="https://alekseizhuravlev.github.io/">Aleksei Zhuravlev</a>
+                </li>
+                <li>
+                    Amirhossein Barari
+                </li>
+                <li>
+                    Jing Wu
+                </li>
+                <li>
+                    Yagmur Caglar
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div class="row" style="padding-top: 0pt;">
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <!-- <ul class="nav nav-pills nav-justified nav-fill"> -->
+            <ul class="nav nav-pills nav-fill text-center" style="display: flex; justify-content: center;">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://drive.google.com/file/d/1mt9TcrknS_EVHT1lw-5SuK_8rEQuHi5p/view?usp=sharing">
+                        <img src="assets/pdf.png" height="60px">
+                        <h4><strong>Poster</strong></h4>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://drive.google.com/file/d/1AD2CYbj7FDw2Qdez7M6yw0PRURLEWn0-/view?usp=sharing">
+                        <img src="assets/pdf.png" height="60px">
+                        <h4><strong>Paper</strong></h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="row" style="padding-top: 10pt;">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <!-- <hr> -->
+            <div align="center">
+                <img src="assets/NLP_method.png" style="width:90%; padding-bottom:20px;">
+              </div>
+    </div>
+
+
+    <div class="row" style="padding-top: 10pt;">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <p>
+                An assessment of the ability of three NLP models to transfer text style with an emphasis on translation from informal to formal style.
+            </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <hr>
+            <h3>Abstract</h3>
+            <hr>
+            <p class="text-justify">
+                <ul>
+                    <li>
+                        Style transfer is the task of automatically transforming a piece of text in one
+                        particular style into another while preserving the original meaning and content.
+                    </li>
+                    <li>
+                        Existing approaches can be rule- and phrase-based, or rely on pretrained large
+                        language models (LLMs). They are limited by the lack of training data: human
+                        annotators are often used to rewrite sentences from one style to another.
+                    </li>
+                    <li>
+                        In this project, we aim to evaluate the generalization of three models that solve
+                        the problem of formality style transfer, focusing on informal to formal
+                        translation.
+                    </li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <hr>
+            <h3>Method</h3>
+            <hr>
+              
+            <div align="center">
+            <img src="assets/data_study_nlp.png" style="width:90%; padding-bottom:20px; padding-top: 10pt;">
+            </div>
+      
+
+            <p class="text-justify">
+                <ul>
+                    <li>
+                        We evaluated three SOTA LLMs: <b>Thank You BART!</b>, <b>StyleINS</b>, and <b>SemiFST</b>.
+                    </li>
+                    <li>
+                        The models in our project are trained on <b>GYAFC</b> dataset, which contains
+                        110K informal/formal sentence pairs obtained from Yahoo Answers L6 corpus.
+                    </li>
+                    <li>
+                        We created our evaluation dataset based on <b>Cornell Movie Corpus</b> which contains
+                        dialogues from various movies.
+                    </li>
+                    <li>
+                        Each of the team members selected 40 informal sentences from movies of
+                        their choice, and rewrote the sentence in a formal way. In total, our
+                        dataset has 200 entries.
+                    </li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="row" style="padding-top: 10pt;">
+        <div class="col-md-10 col-md-offset-1 text-left">
+            <hr>
+            <h2>Evaluation metrics</h2>
+            <hr>
+            <ul>
+                <li>
+                    <b>BLEU score</b> evaluates the quality of translation from one language or style to
+                    another. It is based on how close the model’s translation is to a human
+                    translation.
+                </li>
+                <li>
+                    For <b>Human-based evaluation</b>, each of us manually evaluated the data for
+                    criteria <b>formality</b> (informal / neutral / formal), <b>fluency</b> (comprehensible /
+                    incomprehensible), and <b>meaning preservation</b> (completely / roughly / not
+                    equivalent).
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <hr>
+            <h3>Results</h3>
+            <hr>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1 text-center">
+            
+            <div align="center">
+                <img src="assets/results_nlp.png" style="width:90%; padding-bottom:20px; padding-top: 10pt;">
+                </div>
+
+            <ul class="text-left" style="padding-top: 10pt;">
+                <li>
+                    All papers demonstrated lower BLEU score on our dataset. Thank You BART
+                    performed best, and was followed by SemiFST and StyleINS.
+                </li>
+                <li>
+                    Human-based evaluation demonstrated equivalent performance of Thank You
+                    BART and SemiFST across all 3 metrics. The main task of formality transfer was
+                    successful in about 2/3 of the outputs; most were “Comprehensible”, and
+                    preserved the meaning well.
+                </li>
+                <li>
+                    StyleINS performed significantly worse on human-based evaluation. Almost
+                    half of the outputs were marked as “Incomprehensible” and majority left
+                    “Informal”, demonstrating poor generalization of the model.
+                </li>
+            </ul>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <hr>
+            <h3>Conclusions</h3>
+            <hr>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1 text-center">
+            
+            <ul class="text-left" style="padding-top: 10pt;">
+                <li>
+                    <b>Thank you BART</b> has a better BLEU and human evaluation score than other
+                    papers because it relied on a pretrained BART model and a BLEU-based reward
+                    during training.
+                </li>
+                <li>
+                    <b>Semi-FST</b> also relied on a pretrained LLM (T5-Large), but its semi-supervised
+                    training scheme lowered its performance on both GYAFC and our dataset.
+                </li>
+                <li>
+                    <b>StyleINS</b> did not use a pretrained LLM as a backbone and was trained from
+                    scratch. As a result, its vocabulary was limited only to GYAFC dataset, which
+                    led to a performance downfall compared to the other two models.
+                </li>
+                <li>
+                    We believe the main reason for the generalization gap of all models is that
+                    GYAFC is much smaller than the datasets commonly used for training of LLMs.
+                    Further works can use large scale datasets such as Wikipedia or Reddit.
+                </li>
+            </ul>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <hr>
+            <h3>References</h3>
+            <hr>
+            <ol>
+                <li>Dear sir or madam: Introducing the GYAFC dataset for formality style transfer, ACL 2018.</li>
+                <li>Thank you BART: Rewarding pre-trained models improves formality style transfer, ACL 2021.</li>
+                <li>Text style transfer via learning style instance supported latent space, IJCAI 2021.</li>
+                <li>Semi-supervised formality style transfer with consistency training, ACL 2022.</li>                
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
