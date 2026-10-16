@@ -9,27 +9,29 @@
   <link rel="icon" type="image/png" href="media/icon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap">
   <style>
+    /* Base size: 15px up to ~1920px-wide windows, growing to 18px at ~2560px and wider. */
+    html { font-size: clamp(15px, 0.45vw + 6.4px, 18px); }
     body {
       margin: 0;
       background: #fff;
       color: #222;
       font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 15px;
+      font-size: 1rem;
       line-height: 1.5;
     }
     a { color: #1772d0; text-decoration: none; }
     a:hover, a:focus { color: #f09228; }
-    main { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
-    header { display: flex; align-items: center; gap: 32px; }
+    main { max-width: 53.5rem; margin: 0 auto; padding: 2.1rem 1.3rem; }
+    header { display: flex; align-items: center; gap: 2.1rem; }
     header .bio { flex: 1; }
-    header img { width: 220px; max-width: 40%; }
-    h1 { font-size: 32px; font-weight: 400; text-align: center; margin: 0 0 12px; }
-    h2 { font-size: 22px; font-weight: 400; margin: 40px 0 8px; }
+    header img { width: 14.7rem; max-width: 40%; }
+    h1 { font-size: 2.13rem; font-weight: 400; text-align: center; margin: 0 0 0.8rem; }
+    h2 { font-size: 1.47rem; font-weight: 400; margin: 2.7rem 0 0.5rem; }
     .links { text-align: center; }
-    .paper { display: flex; gap: 24px; align-items: flex-start; padding: 16px 0; }
-    .paper img { width: 180px; flex-shrink: 0; border-radius: 4px; }
+    .paper { display: flex; gap: 1.6rem; align-items: flex-start; padding: 1.1rem 0; }
+    .paper img { width: 12rem; flex-shrink: 0; border-radius: 4px; }
     .paper .title { font-weight: 700; }
-    .paper p { margin: 6px 0 0; }
+    .paper p { margin: 0.4rem 0 0; }
     @media (max-width: 600px) {
       header { flex-direction: column-reverse; gap: 16px; }
       header img { max-width: 60%; }
